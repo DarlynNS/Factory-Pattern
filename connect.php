@@ -40,7 +40,11 @@ spl_autoload_register(function ($classe) {
             // exibe os resultados 
 
             echo $row['codigo'] .'-'. $row['nome'] ."<br>\n";
+<<<<<<< HEAD
         }
+=======
+                    }
+>>>>>>> fb77fed9cb628162f0296d27908abd95e1a564a2
 
             // fecha a conexão 
 

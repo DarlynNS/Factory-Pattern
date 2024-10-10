@@ -63,4 +63,8 @@ final class TSqlSelect extends TSqlInstruction {
     }
 }
 
+<<<<<<< HEAD
 ?>
+=======
+?>
+>>>>>>> fb77fed9cb628162f0296d27908abd95e1a564a2
