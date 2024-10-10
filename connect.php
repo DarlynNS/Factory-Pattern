@@ -1,9 +1,13 @@
 <?php
 
 spl_autoload_register(function ($classe) {
-    if (file_exists("{$classe}.class.php")) {
-        include_once "{$classe}.class.php";
-    } });
+    $filename = "{$classe}.class.php";
+    if (file_exists($filename)) {
+        include_once $filename;
+    } else {
+        throw new Exception("Classe {$classe} não encontrada.");
+    }
+});
 
     // cria a instrução de SELECT
 
@@ -20,7 +24,7 @@ spl_autoload_register(function ($classe) {
     $criteria = new TCriteria;
 
     //obtem a pessoa código "1"
-    $criteria->add(new TFilter('codigo','=','1'));
+    $criteria->add(new TFilter('codigo','=',1));
 
     // atribui o criterio de seleção 
     $sql->setCriteria($criteria);
@@ -29,16 +33,14 @@ spl_autoload_register(function ($classe) {
         // abre conexão com banco de dados my_livro(mysql)
         $conn = TConnection::open('my_livro');
 
-        
-
         // executa a instrução sql
         $result = $conn->query($sql->getInstruction());
         if ($result){
             $row = $result->fetch(PDO::FETCH_ASSOC);
             // exibe os resultados 
 
-            echo $row['codigo'].'-'.$row['nome']."<br>\n";
-                    }
+            echo $row['codigo'] .'-'. $row['nome'] ."<br>\n";
+        }
 
             // fecha a conexão 
 
@@ -74,6 +76,3 @@ spl_autoload_register(function ($classe) {
         die();
     }
 ?>
-
-
-
